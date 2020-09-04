@@ -2,6 +2,8 @@
 
 namespace Alura\DesignPattern;
 
+use Alura\DesignPattern\AcoesAoGerarPedido\{ CriarPedidoNoBanco, LogGerarPedido, EnviarPedidoPorEmail };
+
 class GerarPedidoHandler
 {
     private float $valorOrcamento;
@@ -12,6 +14,7 @@ class GerarPedidoHandler
     {
     }
 
+    //$ php gera-pedido.php 1200.50 7 Filipe
     public function execute(GerarPedido $gerarPedido)
     {
         $orcamento = new Orcamento();
@@ -23,10 +26,12 @@ class GerarPedidoHandler
         $pedido->nomeCliente = $gerarPedido->getNomeCliente();
         $pedido->orcamento = $orcamento;
         
-        // PedidoRepository
-        echo 'Cria pedido no banco de dados ' . PHP_EOL;
-        // MailService
-        echo 'Envia e-mail para o cliente ' . PHP_EOL;
-        echo 'Gerar log de criacao de pedido ' . PHP_EOL;
+        $pedidosRepository = new CriarPedidoNoBanco();
+        $logGerarPedido = new LogGerarPedido();
+        $enviarPedidoPorEmail = new EnviarPedidoPorEmail();
+
+        $pedidosRepository->executaAcao($pedido);
+        $logGerarPedido->executaAcao($pedido);
+        $enviarPedidoPorEmail->executaAcao($pedido);
     }
 }
