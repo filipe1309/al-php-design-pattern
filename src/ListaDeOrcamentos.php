@@ -1,8 +1,10 @@
 <?php
 
 namespace Alura\DesignPattern;
+use IteratorAggregate;
+use ArrayIterator;
 
-class ListaDeOrcamentos
+class ListaDeOrcamentos implements IteratorAggregate
 {
     /** @var Orcamento[] */
     private array $orcamentos;
@@ -17,8 +19,8 @@ class ListaDeOrcamentos
         $this->orcamentos[] = $orcamento;
     }
 
-    public function orcamentos(): array
+    public function getIterator()
     {
-        return $this->orcamentos;
+        return new ArrayIterator($this->orcamentos);
     }
 }

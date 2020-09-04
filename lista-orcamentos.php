@@ -26,7 +26,7 @@ $listaDeOrcamentos->addOrcamento($orcamento1);
 $listaDeOrcamentos->addOrcamento($orcamento2);
 $listaDeOrcamentos->addOrcamento($orcamento3);
 
-foreach ($listaDeOrcamentos->orcamentos() as $orcamento) {
+foreach ($listaDeOrcamentos as $orcamento) {
     echo 'Valor: ' . $orcamento->valor . PHP_EOL;
     echo 'Estado: ' . get_class($orcamento->estadoAtual) . PHP_EOL;
     echo 'Quantidade de itens: ' . $orcamento->quantidadeDeItens . PHP_EOL;
