@@ -3,8 +3,7 @@
 
 require_once 'vendor/autoload.php';
 
-use Alura\DesignPattern\{ Orcamento };
-// use Alura\DesignPattern\AcoesAoGerar/Pedido\{ CriarPedidoNoBanco, LogGerarPedido, EnviarPedidoPorEmail };
+use Alura\DesignPattern\{ Orcamento, ListaDeOrcamentos };
 
 $orcamento1 = new Orcamento();
 $orcamento1->quantidadeDeItens = 7;
@@ -22,13 +21,12 @@ $orcamento3->aprova();
 $orcamento3->finaliza();
 $orcamento3->valor = 1350;
 
-$listaDeOrcamentos = [
-    $orcamento1,
-    $orcamento2,
-    $orcamento3,
-];
+$listaDeOrcamentos = new ListaDeOrcamentos();
+$listaDeOrcamentos->addOrcamento($orcamento1);
+$listaDeOrcamentos->addOrcamento($orcamento2);
+$listaDeOrcamentos->addOrcamento($orcamento3);
 
-foreach ($listaDeOrcamentos as $orcamento) {
+foreach ($listaDeOrcamentos->orcamentos() as $orcamento) {
     echo 'Valor: ' . $orcamento->valor . PHP_EOL;
     echo 'Estado: ' . get_class($orcamento->estadoAtual) . PHP_EOL;
     echo 'Quantidade de itens: ' . $orcamento->quantidadeDeItens . PHP_EOL;
