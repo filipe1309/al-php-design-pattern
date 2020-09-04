@@ -33,3 +33,12 @@ foreach ($listaDeOrcamentos as $orcamento) {
     
     echo PHP_EOL;
 }
+
+echo 'orcamentosFinalizados' . PHP_EOL;
+foreach ($listaDeOrcamentos->orcamentosFinalizados() as $orcamento) {
+    echo 'Valor: ' . $orcamento->valor . PHP_EOL;
+    echo 'Estado: ' . get_class($orcamento->estadoAtual) . PHP_EOL;
+    echo 'Quantidade de itens: ' . $orcamento->quantidadeDeItens . PHP_EOL;
+    
+    echo PHP_EOL;
+}
