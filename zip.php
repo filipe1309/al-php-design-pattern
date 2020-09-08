@@ -1,4 +1,5 @@
 <?php
+// DEPRECATED utlizado DP Bridge para separar classe exportaiveis (Pedido, ORcamento...) de tipos de exportacao (ZIP, XML...)
 //$ php zip.php
 
 require_once 'vendor/autoload.php';
