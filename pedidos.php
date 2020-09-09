@@ -3,14 +3,14 @@
 
 require_once 'vendor/autoload.php';
 
-use Alura\DesignPattern\{ Orcamento, Pedido, DadosExtrinsecosPedido };
+use Alura\DesignPattern\{ Orcamento, Pedido, TemplatePedido };
 
 $pedidos = [];
-$dados = new DadosExtrinsecosPedido(md5('a'), new \DateTimeImmutable());
+$template = new TemplatePedido(md5('a'), new \DateTimeImmutable());
 
 for ($i=0; $i < 10000; $i++) { 
     $pedido = new Pedido();
-    $pedido->dados = $dados;
+    $pedido->template = $template;
     $pedido->orcamento = new Orcamento();
 
     $pedidos[] = $pedido;
