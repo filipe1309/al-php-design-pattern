@@ -13,6 +13,6 @@ class NotaFiscal
     
     public function valor(): float
     {
-        return 0;
+        return array_reduce($this->itens, fn ($valorAcumulado, $itemAtual) => $valorAcumulado + $itemAtual->valor, 0);
     }
 }
