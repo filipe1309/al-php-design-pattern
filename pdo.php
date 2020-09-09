@@ -1,10 +1,12 @@
 <?php
 
+use Alura\DesignPattern\{ PdoConnection };
+
 require 'vendor/autoload.php';
 
-$pdo = new PDO('sqlite::memory:');
+$pdo = PdoConnection::getInstance('sqlite::memory:');
 // $pdo->query('');
 
-$pdo2 = new PDO('sqlite::memory:');
+$pdo2 = PdoConnection::getInstance('sqlite::memory:');
 
 var_dump($pdo, $pdo2);
