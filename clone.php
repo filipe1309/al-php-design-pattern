@@ -21,8 +21,11 @@ $notaFiscal = $builder->paraEmpresa('123456', 'Bob Dylan Corp')
     ->comObservacoes('Esta nota fiscal foi construida com um construtor')
     ->constroi();
 
-$notaFiscal2 = $notaFiscal->clonar();
+sleep(2);
+
+// $notaFiscal2 = $notaFiscal->clonar();
+$notaFiscal2 = clone $notaFiscal;
 $notaFiscal2->itens[] = new ItemOrcamento();
 
-echo count($notaFiscal->itens) . PHP_EOL;
-echo count($notaFiscal2->itens) . PHP_EOL;
+echo count($notaFiscal->itens) . ', ' . $notaFiscal->dataEmissao->format('Y-m-d H:i:s') . PHP_EOL;
+echo count($notaFiscal2->itens) . ', ' . $notaFiscal2->dataEmissao->format('Y-m-d H:i:s') . PHP_EOL;

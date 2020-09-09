@@ -16,7 +16,7 @@ class NotaFiscal
         return array_reduce($this->itens, fn ($valorAcumulado, $itemAtual) => $valorAcumulado + $itemAtual->valor, 0);
     }
 
-    public function clonar(): NotaFiscal
+    /*public function clonar(): NotaFiscal
     {
         $cloneNotaFiscal = new NotaFiscal();
         $cloneNotaFiscal->cnpjEmpresa = $this->cnpjEmpresa;
@@ -27,6 +27,10 @@ class NotaFiscal
         $cloneNotaFiscal->valorImpostos = $this->valorImpostos;
 
         return $cloneNotaFiscal;
+    }*/
 
+    public function __clone()
+    {
+        $this->dataEmissao = new \DateTimeImmutable();
     }
 }
