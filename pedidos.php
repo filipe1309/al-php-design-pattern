@@ -3,18 +3,19 @@
 
 require_once 'vendor/autoload.php';
 
-use Alura\DesignPattern\{ Orcamento, Pedido };
+use Alura\DesignPattern\{ Orcamento, Pedido, DadosExtrinsecosPedido };
 
 $pedidos = [];
-$hoje= new \DateTimeImmutable();
+$dados = new DadosExtrinsecosPedido();
+$dados->dataFinalizacao = new \DateTimeImmutable();
+$dados->nomeCliente = md5('a');
 
 for ($i=0; $i < 10000; $i++) { 
     $pedido = new Pedido();
-    $pedido->nomeCliente = md5((string) rand(1, 100000));
+    $pedido->dados = $dados;
     $pedido->orcamento = new Orcamento();
-    $pedido->dataFinalizacao = $hoje;
 
     $pedidos[] = $pedido;
 }
 
-echo memory_get_peak_usage() / 1024 / 1024; // Bytes / KiloBytes / MegaBytes 7.2 -> 3.9 (com $hoje) -> 
+echo memory_get_peak_usage() / 1024 / 1024; // Bytes / KiloBytes / MegaBytes 7.2 -> 3.9 (com $hoje) -> 3.1 (Flyweight)
