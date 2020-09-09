@@ -3,16 +3,15 @@
 
 require_once 'vendor/autoload.php';
 
-use Alura\DesignPattern\{ Orcamento, Pedido, TemplatePedido };
+use Alura\DesignPattern\{ Orcamento };
+use Alura\DesignPattern\Pedido\{ CriadorDePedido };
 
 $pedidos = [];
-$template = new TemplatePedido(md5('a'), new \DateTimeImmutable());
+$criadorDePedido = new CriadorDePedido();
 
 for ($i=0; $i < 10000; $i++) { 
-    $pedido = new Pedido();
-    $pedido->template = $template;
-    $pedido->orcamento = new Orcamento();
-
+    $orcamento = new Orcamento();
+    $pedido = $criadorDePedido->criarPedido('Bob Dylan', date('Y-m-d'), $orcamento);
     $pedidos[] = $pedido;
 }
 

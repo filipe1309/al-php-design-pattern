@@ -3,6 +3,7 @@
 namespace Alura\DesignPattern;
 
 use Alura\DesignPattern\AcoesAoGerarPedido\{ CriarPedidoNoBanco, LogGerarPedido, EnviarPedidoPorEmail, AcaoAposGerarPedido };
+use Alura\DesignPattern\Pedido\{ Pedido };
 
 class GerarPedidoHandler
 {
