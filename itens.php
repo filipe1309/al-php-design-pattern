@@ -32,4 +32,5 @@ $orcamentoAntigo->addItem($orcamentoMaisAntigoAinda);
 
 $orcamento->addItem($orcamentoAntigo);
 
-echo $orcamento->valor();
+echo $orcamento->valor() . PHP_EOL;
+echo $orcamento->valor() . PHP_EOL;
