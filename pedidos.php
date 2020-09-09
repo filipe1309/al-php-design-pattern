@@ -6,9 +6,7 @@ require_once 'vendor/autoload.php';
 use Alura\DesignPattern\{ Orcamento, Pedido, DadosExtrinsecosPedido };
 
 $pedidos = [];
-$dados = new DadosExtrinsecosPedido();
-$dados->dataFinalizacao = new \DateTimeImmutable();
-$dados->nomeCliente = md5('a');
+$dados = new DadosExtrinsecosPedido(md5('a'), new \DateTimeImmutable());
 
 for ($i=0; $i < 10000; $i++) { 
     $pedido = new Pedido();
