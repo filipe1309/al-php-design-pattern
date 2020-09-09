@@ -15,4 +15,18 @@ class NotaFiscal
     {
         return array_reduce($this->itens, fn ($valorAcumulado, $itemAtual) => $valorAcumulado + $itemAtual->valor, 0);
     }
+
+    public function clonar(): NotaFiscal
+    {
+        $cloneNotaFiscal = new NotaFiscal();
+        $cloneNotaFiscal->cnpjEmpresa = $this->cnpjEmpresa;
+        $cloneNotaFiscal->razaoSocialEmpresa = $this->razaoSocialEmpresa;
+        $cloneNotaFiscal->itens = $this->itens;
+        $cloneNotaFiscal->observacoes = $this->observacoes;
+        $cloneNotaFiscal->dataEmissao = $this->dataEmissao;
+        $cloneNotaFiscal->valorImpostos = $this->valorImpostos;
+
+        return $cloneNotaFiscal;
+
+    }
 }
